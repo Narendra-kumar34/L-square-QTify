@@ -1,0 +1,15 @@
+nav{
+    background-color: var(--color-primary);
+}
+
+.navContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 32px;
+}
+
+.logo{
+    height: 34px;
+    width: 67px;
+}

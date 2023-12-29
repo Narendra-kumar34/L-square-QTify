@@ -4,10 +4,12 @@
 }
 
 .heroSection{
+    height: 270px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 30px;
 }
 
 .heroImage{

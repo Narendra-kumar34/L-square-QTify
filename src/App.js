@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
-import Hero from "./components/Hero";
+import { Outlet } from "react-router-dom";
+import { fetchNewAlbums, fetchSongs, fetchTopAlbums } from "./api/api";
 
 function App() {
+  const [search, setSearch] = useState("");
+  const [data, setData] = useState({});
+
+  const generateData = (key,source) => {
+    source().then((data)=>{
+      setData((prevData)=>{
+        return {...prevData, [key]:data};
+      });
+    });
+  }
+
+  useEffect(()=>{
+    generateData("topAlbums",fetchTopAlbums);
+    generateData("newAlbums",fetchNewAlbums);
+    generateData("songs",fetchSongs);
+  },[]);
+
+  const {topAlbums = [], newAlbums = [], songs = []} = data;
   return (
     <>
-    <Header/>
-    <Hero/>
+      <div>
+        <Header searchData={[...topAlbums, ...newAlbums]} />
+        <Outlet context={{data:{ topAlbums, newAlbums, songs }}} />
+      </div>
     </>
   );
 }

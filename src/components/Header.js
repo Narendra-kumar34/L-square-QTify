@@ -2,16 +2,17 @@ import React from "react";
 import Searchbox from "./searchBox.js";
 import Button from "./Button";
 import styles from "./Header.module.css";
-import QtifyLogo from "./QtifyLogo.js"
+import QtifyLogo from "./QtifyLogo.js";
+import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header({ searchData }) {
   return (
-    <nav>
-      <div className={styles.navContainer}>
+    <nav className={styles.navbar}>
+      <Link to={"/"}>
         <QtifyLogo />
-        <Searchbox placeholder="Search a album of your choice" />
-        <Button>Give Feedback</Button>
-      </div>
+      </Link>
+      <Searchbox placeholder="Search a album of your choice" />
+      <Button>Give Feedback</Button>
     </nav>
   );
 }

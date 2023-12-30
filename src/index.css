@@ -55,6 +55,9 @@ h6{
   isolation: isolate;
 }
 
+.swiper-slide{
+  width: auto !important;
+}
 a,
 a:hover,
 a:focus,
